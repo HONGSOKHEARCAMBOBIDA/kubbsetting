@@ -1,0 +1,51 @@
+// ------------------------------------------------------------------
+// Design tokens
+// Primary color per brief: #409EFF. Everything else derived from it
+// to keep the palette coherent across light and dark themes.
+// ------------------------------------------------------------------
+
+:root {
+  --color-primary: #409eff;
+  --color-primary-light: #79bbff;
+  --color-primary-dark: #337ecc;
+
+  --color-bg: #ffffff;
+  --color-bg-soft: #f7f9fc;
+  --color-surface: #ffffff;
+  --color-border: #e7ebf1;
+
+  --color-text: #1f2937;
+  --color-text-soft: #5c6b7a;
+  --color-text-muted: #8a97a6;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --shadow-soft: 0 4px 20px rgba(31, 41, 55, 0.06);
+  --shadow-hover: 0 12px 32px rgba(64, 158, 255, 0.16);
+
+  --header-height: 68px;
+  --transition-base: 0.25s ease;
+
+  --max-width: 1180px;
+}
+
+html.dark {
+  --color-bg: #0f1520;
+  --color-bg-soft: #141b28;
+  --color-surface: #171f2c;
+  --color-border: #232d3d;
+
+  --color-text: #eef2f7;
+  --color-text-soft: #aab6c4;
+  --color-text-muted: #7c8a9a;
+
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 12px 32px rgba(64, 158, 255, 0.25);
+}
+
+// Element Plus theming hooks
+html {
+  --el-color-primary: var(--color-primary);
+}
