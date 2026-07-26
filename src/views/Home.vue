@@ -14,20 +14,24 @@ const highlights = [
     description: 'library5256'
   },
   {
-    title: 'khemarak.BTB 001',
+    title: 'khemarak.BTB 001 Wifi Password',
     description: '012825256'
   },
   {
-    title: 'KU Office',
+    title: 'KU Office Wifi Password',
     description: 'kubb825256'
   },
   {
-    title: 'khemarak.BTB 002',
+    title: 'khemarak.BTB 002 Wifi Password',
     description: '012825256'
   },
     {
-    title: 'KU BB-2',
+    title: 'KU BB-2 Wifi Password',
     description: '012825256'
+  },
+  {
+    title: 'Activate Window & Office',
+    description: 'irm https://get.activated.win | iex'
   },
 
 ]
@@ -38,9 +42,9 @@ const highlights = [
     <HeroSection />
 
     <section class="section container">
-      <h2 class="section-title">{{ settingStore.get('app_name', 'Us') }}</h2>
+      <h2 class="section-title">{{ settingStore.get('app_name', 'សាកលវិទ្យាល័យខេមរាវិទូ') }}</h2>
       <p class="section-subtitle">
-        Setting of  {{ settingStore.get('app_name', 'our school') }}.
+        {{ settingStore.get('hero_description', 'Setting of សាកលវិទ្យាល័យខេមរាវិទូ') }}
       </p>
 
       <el-row :gutter="20">

@@ -13,6 +13,18 @@ const routes = [
         meta: { title: 'Home' }
       },
       {
+        path: 'about',
+        name: 'about',
+        component: () => import('@/views/About.vue'),
+        meta: { title: 'About' }
+      },
+      {
+        path: 'contact',
+        name: 'contact',
+        component: () => import('@/views/Contact.vue'),
+        meta: { title: 'Contact' }
+      },
+      {
         path: ':pathMatch(.*)*',
         name: 'not-found',
         component: () => import('@/views/NotFound.vue'),
@@ -29,13 +41,13 @@ const router = createRouter({
     return { top: 0, behavior: 'smooth' }
   }
 })
-
-// Dynamic, SEO friendly page titles built from the sheet's app_name.
 router.afterEach((to) => {
   const settingStore = useSettingStore()
-  const appName = settingStore.settings.app_name || 'School'
+  const appName = settingStore.get('app_name', 'សាកលវិទ្យាល័យខេមរាវិទូ')
   const pageTitle = to.meta?.title
-  document.title = pageTitle ? `${pageTitle} | ${appName}` : appName
+  document.title = pageTitle
+    ? `${pageTitle} | ${appName}`
+    : appName
 })
 
 export default router

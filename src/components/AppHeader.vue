@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { Menu, Moon, Sunny } from '@element-plus/icons-vue'
 import { useSettingStore } from '@/stores/setting'
@@ -8,11 +8,13 @@ import { useThemeStore } from '@/stores/theme'
 const settingStore = useSettingStore()
 const themeStore = useThemeStore()
 const route = useRoute()
-
 const drawerVisible = ref(false)
 
+
 const navItems = [
-  { label: 'Home', to: '/' },
+  { label: 'ទំព័រដេីម', to: '/' },
+  { label: 'អំពីយើង', to: '/about' },
+  { label: 'ទំនាក់ទំនង', to: '/contact' }
 ]
 
 const activeIndex = computed(() => route.path)
@@ -20,6 +22,7 @@ const activeIndex = computed(() => route.path)
 function closeDrawer() {
   drawerVisible.value = false
 }
+
 </script>
 
 <template>
@@ -27,12 +30,11 @@ function closeDrawer() {
     <div class="container app-header__inner">
       <router-link to="/" class="app-header__brand">
         <el-image
-          v-if="settingStore.settings.logo"
-          :src="settingStore.settings.logo"
+          :src="settingStore.get('logo', '/logo.png')"
           class="app-header__logo"
           fit="cover"
         />
-        <span class="app-header__name">{{ settingStore.get('app_name', 'School') }}</span>
+        <span class="app-header__name">{{ settingStore.get('app_name', 'សាកលវិទ្យាល័យខេមរាវិទូ') }}</span>
       </router-link>
 
       <!-- Desktop horizontal navigation -->
@@ -57,7 +59,6 @@ function closeDrawer() {
           aria-label="Toggle theme"
         />
 
-        <!-- Mobile hamburger -->
         <el-button
           class="app-header__hamburger"
           circle
@@ -68,7 +69,6 @@ function closeDrawer() {
       </div>
     </div>
 
-    <!-- Mobile drawer navigation -->
     <el-drawer
       v-model="drawerVisible"
       direction="rtl"
@@ -78,12 +78,11 @@ function closeDrawer() {
     >
       <div class="drawer-brand">
         <el-image
-          v-if="settingStore.settings.logo"
-          :src="settingStore.settings.logo"
+          :src="settingStore.get('logo', '/logo.png')"
           class="app-header__logo"
           fit="cover"
         />
-        <span>{{ settingStore.get('app_name', 'School') }}</span>
+        <span>{{ settingStore.get('app_name', 'សាកលវិទ្យាល័យខេមរាវិទូ') }}</span>
       </div>
       <el-menu :default-active="activeIndex" router @select="closeDrawer">
         <el-menu-item v-for="item in navItems" :key="item.to" :index="item.to" :route="item.to">

@@ -8,13 +8,12 @@ const settingStore = useSettingStore()
   <section class="hero">
     <div
       class="hero__bg"
-      :style="settingStore.settings.banner ? { backgroundImage: `url(${settingStore.settings.banner})` } : {}"
+      :style="settingStore.get('banner') ? { backgroundImage: `url(${settingStore.get('banner')})` } : {}"
     />
     <div class="hero__overlay" />
-
     <div class="container hero__content">
-      <h1 class="hero__title">{{ settingStore.get('hero_title', 'Welcome') }}</h1>
-      <p class="hero__description">{{ settingStore.get('hero_description') }}</p>
+      <h1 class="hero__title">{{ settingStore.get('hero_title', settingStore.get('app_name', 'សាកលវិទ្យាល័យខេមរាវិទូ')) }}</h1>
+      <p class="hero__description">{{ settingStore.get('hero_description', 'Setting of សាកលវិទ្យាល័យខេមរាវិទូ') }}</p>
     </div>
   </section>
 </template>
@@ -29,7 +28,7 @@ const settingStore = useSettingStore()
   color: #fff;
 
   @media (min-width: 768px) {
-    min-height: 480px;
+    min-height: 280px;
   }
 }
 

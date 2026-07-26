@@ -1,53 +1,23 @@
 <script setup>
-import { useSettingStore } from '@/stores/setting'
+import { Message, Location, Phone } from '@element-plus/icons-vue'
 import ContactCard from '@/components/ContactCard.vue'
+import { useSettingStore } from '@/stores/setting'
 
 const settingStore = useSettingStore()
 </script>
 
 <template>
-  <div class="contact section container">
-    <h1 class="section-title">Get In Touch</h1>
-    <p class="section-subtitle">
-      Reach out to {{ settingStore.get('app_name', 'us') }} through any of the channels below.
-    </p>
-
-    <el-row :gutter="20">
-      <el-col :xs="24" :sm="12" :md="8" style="margin-bottom: 20px">
-        <ContactCard
-          icon="📞"
-          label="Phone"
-          :value="settingStore.settings.phone"
-          :href="settingStore.settings.phone ? `tel:${settingStore.settings.phone}` : ''"
-        />
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="8" style="margin-bottom: 20px">
-        <ContactCard
-          icon="✉️"
-          label="Email"
-          :value="settingStore.settings.email"
-          :href="settingStore.settings.email ? `mailto:${settingStore.settings.email}` : ''"
-        />
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="8" style="margin-bottom: 20px">
-        <ContactCard icon="📍" label="Address" :value="settingStore.settings.address" />
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="8" style="margin-bottom: 20px">
-        <ContactCard
-          icon="💬"
-          label="Telegram"
-          :value="settingStore.settings.telegram"
-          :href="settingStore.settings.telegram"
-        />
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="8" style="margin-bottom: 20px">
-        <ContactCard
-          icon="📘"
-          label="Facebook"
-          :value="settingStore.settings.facebook"
-          :href="settingStore.settings.facebook"
-        />
-      </el-col>
+  <section class="section container">
+    <h1 class="section-title">ទំនាក់ទំនង</h1>
+    <p class="section-subtitle">ព័ត៌មានសម្រាប់ទំនាក់ទំនងជាមួយសាកលវិទ្យាល័យ។</p>
+    <el-row :gutter="20" class="contact-grid">
+      <el-col :xs="24" :md="8"><ContactCard label="Phone" :value="settingStore.get('phone')" :href="settingStore.get('phone') ? `tel:${settingStore.get('phone')}` : ''"><template #icon><el-icon><Phone /></el-icon></template></ContactCard></el-col>
+      <el-col :xs="24" :md="8"><ContactCard label="Email" :value="settingStore.get('email')" :href="settingStore.get('email') ? `mailto:${settingStore.get('email')}` : ''"><template #icon><el-icon><Message /></el-icon></template></ContactCard></el-col>
+      <el-col :xs="24" :md="8"><ContactCard label="Address" :value="settingStore.get('address')"><template #icon><el-icon><Location /></el-icon></template></ContactCard></el-col>
     </el-row>
-  </div>
+  </section>
 </template>
+
+<style scoped>
+.contact-grid :deep(.el-col) { margin-bottom: 20px; }
+</style>
